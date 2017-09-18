@@ -1,0 +1,25 @@
+<div class="card">
+   <div class="card-header">
+    <h4 class="card-title text-primary inline-header">Evènements</h4>
+    <button type="submit" class="btn btn-outline-primary pull-right" pTooltip="Nouveau" tooltipPosition="top" (click)="add()">
+      <i class="fa fa-plus fa-lg" aria-hidden="true"></i>
+    </button>
+    <form class="form-inline pull-right col-3" (ngSubmit)="getEvents(); dataTable.reset();" novalidate>
+      <input type="text" class="form-control w-100" name="search" id="search"
+             placeholder="Recherche...">
+    </form>
+  </div>
+  <div class="card-block">
+    <br>
+    <div style="margin-left:15px;">
+      <div class="card" style="width: 20rem;">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+          <h4 class="card-title">Card title</h4>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Détails</a>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>

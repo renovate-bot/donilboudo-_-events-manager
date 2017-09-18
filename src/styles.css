@@ -1,1 +1,69 @@
-/* You can add global styles to this file, and also import other style files */
+/***** TAB MENU STYLES OVERIDE **********/
+body .ui-tabmenu .ui-tabmenu-nav {
+    display: inline-block;
+    margin-bottom: -8px;
+    border: none;
+}
+
+body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem {
+  margin-right:10px;
+}
+
+body .ui-tabmenu .ui-menuitem-link {
+  border: 1px solid #cdcdcd;
+}
+
+
+/******** STEP MENU STYLES OVERRIDE ***********/
+body .ui-steps ul {
+    height: 140px;
+    width: 99%;
+    margin: auto;
+    text-align: center;
+}
+
+body .ui-steps .ui-steps-item .ui-menuitem-link .ui-steps-number {
+    border-radius: 0;
+    font-size: 1.6em;
+    width: 60px;
+}
+
+body .ui-steps .ui-steps-item {
+    float: initial;
+    display: inline-block;
+    width: 250px;
+    padding: 5px;
+}
+
+body .ui-steps .ui-steps-item .ui-menuitem-link {
+    cursor:pointer!important;
+    font-weight: bold;
+}
+
+body .ui-steps.ui-steps-no-trail li{
+  height:100px;
+  overflow:hidden;
+  cursor:default;
+}
+
+body .ui-steps.ui-steps-no-trail::before {
+  border: none;
+}
+
+/************ OTHER ********************/
+body .inline-header {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+body .ui-datatable .ui-datatable-footer {
+  padding: .5em .75em;
+}
+
+body .ui-datatable .ui-datatable-footer .ui-chkbox-label {
+  margin:0;
+}
+
+body .ui-dropdown.form-control {
+  padding:0;
+}

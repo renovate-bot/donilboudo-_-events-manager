@@ -1,0 +1,77 @@
+<div class="card">
+  <div class="card-header">
+    <h4 class="card-title text-primary">
+      <span *ngIf="user && !user.id">Nouveau utilisateur</span>
+      <span *ngIf="user && user.id">Modifier un utilisateur</span>
+    </h4>
+  </div>
+  <div class="card-block">
+    <br>
+    <form class="col-sm-12" *ngIf="user" #form="ngForm" (ngSubmit)="save(form, user)" novalidate>
+      <div class="form-group row" [ngClass]="{'has-danger': form.submitted && firstName.invalid}">
+        <label for="firstName" class="col-sm-5 col-form-label">Prénom</label>
+        <div class="col-sm-7">
+          <div class="input-group">
+            <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Prénom"
+                  [(ngModel)]="user.firstName" required #firstName="ngModel" maxlength="50">
+          </div>
+          <small class="form-text text-info">Obligatoire</small>
+        </div>
+      </div>
+      <div class="form-group row" [ngClass]="{'has-danger': form.submitted && lastName.invalid}">
+        <label for="lastName" class="col-sm-5 col-form-label">Nom</label>
+        <div class="col-sm-7">
+          <div class="input-group">
+            <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Nom"
+                  [(ngModel)]="user.lastName" required #lastName="ngModel" maxlength="50">
+          </div>
+          <small class="form-text text-info">Obligatoire</small>
+        </div>
+      </div>
+      <div class="form-group row" [ngClass]="{'has-danger': form.submitted && email.invalid}">
+        <label for="email" class="col-sm-5 col-form-label">Email</label>
+        <div class="col-sm-7">
+          <div class="input-group">
+            <input type="email" class="form-control" name="email" id="email" placeholder="Email"
+                  [(ngModel)]="user.email" required #email="ngModel">
+          </div>
+          <small class="form-text text-info">Obligatoire</small>
+        </div>
+      </div>
+      <div class="form-group row" [ngClass]="{'has-danger': form.submitted && phone.invalid}">
+        <label for="phone" class="col-sm-5 col-form-label">Téléphone</label>
+        <div class="col-sm-7">
+          <div class="input-group">
+            <input type="tel" class="form-control" name="phone" id="phone" placeholder="Téléphone"
+                  [(ngModel)]="user.phone" required #phone="ngModel">
+          </div>
+        </div>
+      </div>
+      <div class="form-group row" [ngClass]="{'has-danger': form.submitted && userName.invalid}">
+        <label for="userName" class="col-sm-5 col-form-label">Nom d'utilisateur</label>
+        <div class="col-sm-7">
+          <div class="input-group">
+            <input type="text" class="form-control" name="userName" id="userName" placeholder="Nom d'utilisateur"
+                  [(ngModel)]="user.userName" required #userName="ngModel">
+          </div>
+          <small class="form-text text-info">Obligatoire</small>
+        </div>
+      </div>
+      <div class="form-group row" [ngClass]="{'has-danger': form.submitted && password.invalid}">
+        <label for="password" class="col-sm-5 col-form-label">Mot de passe</label>
+        <div class="col-sm-7">
+          <div class="input-group">
+            <input type="password" class="form-control" name="password" id="password" placeholder="Mot de passe"
+                  [(ngModel)]="user.password" required #password="ngModel">
+          </div>
+          <small class="form-text text-info">Obligatoire</small>
+        </div>
+      </div>
+      
+      <div class="form-group pull-right">
+        <br>
+        <button type="button" class="btn btn-outline-warning" (click)="goBack()">Annuler</button>
+        <button type="submit" class="btn btn-outline-success">Enregistrer</button>
+      </div>
+    </form>
+  </div>

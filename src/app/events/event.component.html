@@ -1,0 +1,123 @@
+<div class="card">
+  <div class="card-header">
+    <h4 class="card-title text-primary">
+      <span>Nouveau évènement</span>
+    </h4>
+  </div>
+  <br>
+  <div class="card-block">
+    <form class="col-sm-12" *ngIf="event" #form="ngForm" (ngSubmit)="save(form, event)" novalidate>
+      <div class="form-group row" [ngClass]="{'has-danger': form.submitted && title.invalid}">
+        <label for="title" class="col-sm-5 col-form-label">Titre</label>
+        <div class="col-sm-7">
+          <div class="input-group">
+            <input type="text" class="form-control" name="title" id="title"
+                   placeholder="Titre" [(ngModel)]="event.title" required #title="ngModel">
+          </div>
+          <small class="form-text text-info">Obligatoire</small>
+        </div>
+      </div>
+      <div class="form-group row" [ngClass]="{'has-danger': form.submitted && city.invalid}">
+        <label for="city" class="col-sm-5 col-form-label">Ville</label>
+        <div class="col-sm-7">
+         <p-dropdown styleClass="w-100 form-control" [options]="cities" required #city="ngModel" id="city" name="city"
+            [(ngModel)]="event.city" placeholder="Choissir une ville">
+         </p-dropdown>
+          <small class="form-text text-info">Obligatoire</small>
+        </div>
+      </div>
+      <div class="form-group row">
+            <label for="description" class="col-sm-5 col-form-label">Description</label>
+      </div>
+       <div [ngClass]="{'has-danger': form.submitted && description.invalid}">
+            <textarea class="form-control" id="description" name="description" rows="5" [(ngModel)]="event.description"
+                required #description="ngModel">
+            </textarea>
+            <small class="form-text text-info">Obligatoire</small>
+      </div>
+      <br>
+      <!--<div class="form-group row" [ngClass]="{'has-danger': form.submitted && providerName.invalid}">
+        <label for="providerName" class="col-sm-5 col-form-label">{{'LINK_SERVERS.PROVIDER_NAME' | translate}}</label>
+        <div class="col-sm-7">
+          <div class="input-group">
+            <input type="text" class="form-control" name="providerName" id="providerName"
+                   placeholder="{{'LINK_SERVERS.PROVIDER_NAME' | translate}}"
+                   [(ngModel)]="linkServer.providerName" required #providerName="ngModel" [disabled]="true">
+          </div>
+        </div>
+      </div>
+      <div class="form-group row" [ngClass]="{'has-danger': form.submitted && providerType.invalid}">
+        <label for="providerType" class="col-sm-5 col-form-label">{{'LINK_SERVERS.PROVIDER_TYPE' | translate}}</label>
+        <div class="col-sm-7">
+          <div class="input-group">
+            <input type="text" class="form-control" name="providerType" id="providerType"
+                   placeholder="{{'LINK_SERVERS.PROVIDER_TYPE' | translate}}"
+                   [(ngModel)]="linkServer.providerType" required #providerType="ngModel" [disabled]="true">
+          </div>
+        </div>
+      </div>
+      <div class="form-group row" [ngClass]="{'has-danger': form.submitted && dataSource.invalid}">
+        <label for="dataSource" class="col-sm-5 col-form-label">{{'LINK_SERVERS.DATA_SOURCE' | translate}}</label>
+        <div class="col-sm-7">
+          <div class="input-group">
+            <input type="text" class="form-control" name="dataSource" id="dataSource"
+                   placeholder="{{'LINK_SERVERS.DATA_SOURCE' | translate}}"
+                   [(ngModel)]="linkServer.dataSource" required #dataSource="ngModel" maxlength="50">
+          </div>
+          <small class="form-text text-info">{{'COMMON.MESSAGES.REQUIRED' | translate}}</small>
+        </div>
+      </div>
+      <div class="form-group row" [ngClass]="{'has-danger': form.submitted && databaseName.invalid}">
+        <label for="databaseName" class="col-sm-5 col-form-label">{{'LINK_SERVERS.DATABASE_NAME' | translate}}</label>
+        <div class="col-sm-7">
+          <div class="input-group">
+            <input type="text" class="form-control" name="databaseName" id="databaseName"
+                   placeholder="{{'LINK_SERVERS.DATABASE_NAME' | translate}}"
+                   [(ngModel)]="linkServer.databaseName" #databaseName="ngModel" maxlength="50">
+          </div>
+        </div>
+      </div>
+      <div class="form-group row" [ngClass]="{'has-danger': form.submitted && login.invalid}">
+        <label for="login" class="col-sm-5 col-form-label">{{'LINK_SERVERS.LOGIN' | translate}}</label>
+        <div class="col-sm-7">
+          <div class="input-group">
+            <input type="text" class="form-control" name="login" id="login"
+                   placeholder="{{'LINK_SERVERS.LOGIN' | translate}}" [(ngModel)]="linkServer.login"
+                   #login="ngModel" maxlength="50">
+          </div>
+        </div>
+      </div>
+      <div class="form-group row" [ngClass]="{'has-danger': form.submitted && password.invalid}">
+        <label for="password" class="col-sm-5 col-form-label">{{'LINK_SERVERS.PASSWORD' | translate}}</label>
+        <div class="col-sm-7">
+          <div class="input-group">
+            <input type="password" class="form-control" name="password" id="password"
+                   placeholder="{{'LINK_SERVERS.PASSWORD' | translate}}"
+                   [(ngModel)]="linkServer.password" #password="ngModel" maxlength="50">
+          </div>
+        </div>
+      </div>
+      -->
+      <div class="row form-group" [ngClass]="{'has-danger': form.submitted && startDate.invalid}">
+        <label class="col-form-label col-sm-5" for="startDate">Date de début</label>
+        <div class="col-sm-7">
+          <p-calendar inputStyleClass="form-control" name="startDate" id="startDate" [(ngModel)]="event.startDate"
+                      required #startDate="ngModel"></p-calendar>
+          <small class="form-text text-info">Obligatoire</small>
+        </div>
+      </div>
+      <div class="row form-group" [ngClass]="{'has-danger': form.submitted && endDate.invalid}">
+        <label class="col-form-label col-sm-5" for="endDate">Date de fin</label>
+        <div class="col-sm-7">
+          <p-calendar inputStyleClass="form-control" name="endDate" id="endDate" [(ngModel)]="event.endDate"
+                      required #endDate="ngModel"></p-calendar>
+          <small class="form-text text-info">Obligatoire</small>
+        </div>
+      </div>
+      <div class="form-group pull-right">
+        <br>
+        <button type="button" class="btn btn-outline-warning" (click)="goBack()">Annuler</button>
+        <button type="submit" class="btn btn-outline-success">Sauvegarder</button>
+      </div>
+    </form>
+  </div>

@@ -1,0 +1,42 @@
+<div class="card">
+   <div class="card-header">
+    <h4 class="card-title text-primary inline-header">Utilisateurs</h4>
+    <button type="submit" class="btn btn-outline-primary pull-right" pTooltip="Nouveau" tooltipPosition="top" (click)="add()">
+      <i class="fa fa-plus fa-lg" aria-hidden="true"></i>
+    </button>
+    <form class="form-inline pull-right col-3" (ngSubmit)="getUsers(); dataTable.reset();" novalidate>
+      <input type="text" class="form-control w-100" name="search" id="search"
+             placeholder="Recherche...">
+    </form>
+  </div>
+  <div class="card-block">
+    <p-dataTable [value]="users" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]">
+        <p-column field="lastName" header="Prénom"></p-column>
+        <p-column field="firstName" header="Nom"></p-column>
+        <p-column field="userName" header="Nom d'utilisateur"></p-column>
+        <p-column field="role" header="Rôle"></p-column>
+        <p-column header="Action">
+        <ng-template pTemplate="body" let-user="rowData">
+          <button class="btn btn-outline-warning" type="button" pTooltip="Modifier" tooltipPosition="top" (click)="edit(user)">
+            <i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>
+          </button>
+          <button class="btn btn-outline-danger" type="button" pTooltip="Supprimer" tooltipPosition="top" (click)="delete(user)">
+            <i class="fa fa-lg fa-eye-slash" aria-hidden="true"></i>
+          </button>
+        </ng-template>
+      </p-column>
+    </p-dataTable>
+  </div>
+</div>
+
+<!-- Deactivate and cancel Confirmation Modal -->
+<p-confirmDialog key="deleteDialog" header="Supprimer" width="600" #cd>
+  <p-footer>
+    <button type="button" class="btn btn-outline-danger" (click)="cd.accept()">
+     Supprimer
+    </button>
+    <button type="button" class="btn btn-outline-warning" (click)="cd.reject()">
+      Annuler
+    </button>
+  </p-footer>
+</p-confirmDialog>
